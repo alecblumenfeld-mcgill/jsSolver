@@ -77,3 +77,11 @@ body {
     border-bottom: 0;
   }
 }
+#inputBox{
+  background-color: blue;
+  color: white;
+  min-height: 25px;
+  max-height: 25px;
+  min-width: 25px;
+  max-width: 25px;
+}

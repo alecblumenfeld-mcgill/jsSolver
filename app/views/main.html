@@ -8,16 +8,20 @@
 </div>
 
 <div class="row marketing">
-  <h4>HTML5 Boilerplate</h4>
-  <p>
-    HTML5 Boilerplate is a professional front-end template for building fast, robust, and adaptable web apps or sites.
-  </p>
+   <button ng-click="logField()">log</button>
 
-  <h4>Angular</h4>
-  <p>
-    AngularJS is a toolset for building the framework most suited to your application development.
-  </p>
 
-  <h4>Karma</h4>
-  <p>Spectacular Test Runner for JavaScript.</p>
+    
+      <input type="text" name="input" id="inputBox"  ng-model="r00" ng-change="updateField(0,0,r00)">
+      <input type="text" name="input"  id="inputBox"ng-model="r01" ng-change="updateField(1,0,r01)">
+      <input type="text" name="input" id="inputBox" ng-model="r02" ng-change="updateField(2,0,r02)">
+
+      <input type="text" name="input"  ng-model="r00" ng-change="updateField(1,3,r01)">
+      <input type="text" name="input"  ng-model="r00" ng-change="updateField(0,0,r00)">
+      <input type="text" name="input"  ng-model="r00" ng-change="updateField(1,0,r01)">
+      <input type="text" name="input"  ng-model="r00" ng-change="updateField(0,0,r00)">
+      <input type="text" name="input"  ng-model="r00" ng-change="updateField(1,0,r01)">
+
+      {{field[0][0]}}
+
 </div>
