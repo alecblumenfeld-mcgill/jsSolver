@@ -9,15 +9,6 @@
  */
 angular.module('suduWebApp')
   .controller('MainCtrl', function ($scope) {
- 	$scope.r00= 0;
- 	$scope.r01= 0;
- 	$scope.r02= 0;
- 	$scope.r03= 0;
- 	$scope.r04= 0;
- 	$scope.r05= 0;
- 	$scope.r06= 0;
- 	$scope.r07= 0;
- 	$scope.r08 = 0;
 
 
     $scope.field = [
@@ -38,9 +29,115 @@ angular.module('suduWebApp')
     $scope.logField = function(){
     	console.log($scope.field);
     };
+    $scope.clean= function(){
+    	for (var x = 0; x < 9; x++)
+    		for (var y = 0; y < 9; y++)
+    		if ($scope.field[x][y] == null)
+    			$scope.field[x][y] = 0;
+        return false;
 
-	
+    }
+    $scope.solveSudoku = function(field, x, y) {
+    var cell = findUnassignedLocation(field, x, y);
+    x = cell[0];
+    y = cell[1];
+
+    // when solved 
+    if (x == -1) {
+        console.log("solved");
+        return true;
+    }
+
+    for (var num = 1; num <= 9; num++) {
+
+        if ( noConflicts(field, x, y, num) ) {   
+            field[x][y] = num;
+
+            if ( $scope.solveSudoku(field, x, y) ) {                
+                return true;
+            }
+
+                    // determsins empy cells   
+            field[x][y] = 0;
+        }
+    }
+
+    // backrack
+    return false;
+}
+
+
+function findUnassignedLocation(field, x, y) {
+    var done = false;
+    var res = [-1, -1];
+
+    while (!done) {
+        if (x == 9) {
+            done = true;
+        }
+        else {
+            if (field[x][y] == 0) {
+                res[0] = x;
+                res[1] = y;
+                done = true;
+            }
+            else {
+                if (y < 8) {
+                    y++;
+                }
+                else {
+                    x++;
+                    y = 0;
+                }
+            }
+        }
+    }
+
+    return res;
+}
+
+function noConflicts(field, x, y, num) {
+    return isxOk(field, x, num) && isyOk(field, y, num) && isBoxOk(field, x, y, num);
+}
+
+function isxOk(field, x, num) {
+    for (var y = 0; y < 9; y++)
+        if (field[x][y] == num)
+            return false;
+
+    return true;
+}
+function isyOk(field, y, num) {
+    for (var x = 0; x < 9; x++)
+    if (field[x][y] == num)
+        return false;
+
+    return true;    
+}
+function isBoxOk(field, x, y, num) {
+    x =  Math.floor(x / 3) * 3;
+    y =  Math.floor(y / 3) * 3;
+
+    for (var r = 0; r < 3; r++)
+        for (var c = 0; c < 3; c++)
+            if (field[x + r][y + c] == num)
+                return false;
+
+    return true;
+}
+
+function printfield(field) {
+    var res = "";
+
+    for (var i = 0; i < 9; i++) {
+        for (var j = 0; j < 9; j++) {
+            res += field[i][j];
+        }
+        res += "\n";
+    }
+    console.log(res);
+}
 
 
   });
-  
+
