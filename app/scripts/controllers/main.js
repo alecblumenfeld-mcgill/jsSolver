@@ -18,11 +18,7 @@ angular.module('suduWebApp')
  	$scope.r06= 0;
  	$scope.r07= 0;
  	$scope.r08 = 0;
-    $scope.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
+
 
     $scope.field = [
         [0,0,8,4,0,3,5,0,6],
@@ -43,5 +39,8 @@ angular.module('suduWebApp')
     	console.log($scope.field);
     };
 
+	
+
 
   });
+  
