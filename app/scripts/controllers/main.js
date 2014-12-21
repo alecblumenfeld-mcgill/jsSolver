@@ -8,10 +8,55 @@
  * Controller of the suduWebApp
  */
 angular.module('suduWebApp')
-  .controller('MainCtrl', function ($scope) {
-
-
+  .controller('MainCtrl', function ($scope,  $location) {
+    $scope.go = function ( path ) {
+  $location.path( path );
+};
+    $scope.bench;
+$scope.clickToOpen = function () {
+        ngDialog.open({ 
+            template: 'popup',
+            showClose:'false'
+         });
+    };
+  	$scope.isSolved=false;
     $scope.field = [
+        [0,0,0,0,0,0,0,0,0],
+        [0,0,0,0,0,0,0,0,0],
+        [0,0,0,0,0,0,0,0,0],
+        [0,0,0,0,0,0,0,0,0],
+        [0,0,0,0,0,0,0,0,0],
+        [0,0,0,0,0,0,0,0,0],
+        [0,0,0,0,0,0,0,0,0],
+        [0,0,0,0,0,0,0,0,0],
+        [0,0,0,0,0,0,0,0,0]
+
+    ];
+    $scope.hard = [
+        [0,0,0,0,0,0,0,0,0],
+        [0,1,0,6,2,0,0,9,0],
+        [0,0,2,0,0,9,3,1,0],
+        [0,0,4,0,0,0,0,0,0],
+        [0,0,8,0,0,0,1,0,0],
+        [0,3,0,0,0,0,5,0,0],
+        [0,6,9,1,0,0,4,0,0],
+        [0,8,0,0,7,3,0,5,0],
+        [0,0,0,0,0,0,0,0,0]
+
+    ];
+    $scope.med = [
+        [9,1,3,6,0,0,0,0,0],
+        [0,0,0,0,8,7,0,9,0],
+        [0,0,0,0,0,0,0,4,0],
+        [5,8,0,0,4,6,0,0,7],
+        [0,0,0,0,5,0,0,0,0],
+        [7,0,0,8,9,0,0,5,6],
+        [0,9,0,0,0,0,0,0,0],
+        [0,6,0,3,7,0,0,2,9],
+        [0,0,0,0,0,5,3,6,4]
+
+        ];
+    $scope.easy = [
         [0,0,8,4,0,3,5,0,6],
         [0,0,3,1,0,2,0,0,4],
         [0,4,5,7,0,0,0,9,0],
@@ -22,6 +67,31 @@ angular.module('suduWebApp')
         [1,0,0,5,0,7,8,0,0],
         [8,0,6,9,0,1,3,0,0]
     ];
+    $scope.premadeEasy = function(){
+        for (var x = 0; x < 9; x++){
+                    for (var y = 0; y < 9; y++){
+                                    $scope.field[x][y] = $scope.easy[x][y];
+                 console.log($scope.field[x][y]);}}
+
+
+    };
+    $scope.premadeMed = function(){
+        for (var x = 0; x < 9; x++){
+                    for (var y = 0; y < 9; y++){
+                                    $scope.field[x][y] = $scope.med[x][y];
+                 console.log($scope.field[x][y]);}}
+
+
+    };
+    $scope.premadeHard = function(){
+        for (var x = 0; x < 9; x++){
+                    for (var y = 0; y < 9; y++){
+                                    $scope.field[x][y] = $scope.hard[x][y];
+                 console.log($scope.field[x][y]);}}
+
+
+    };
+    
     $scope.updateField = function(x,y,value){
     	$scope.field[x][y]=value;
     };
@@ -37,7 +107,20 @@ angular.module('suduWebApp')
         return false;
 
     }
+    $scope.reset= function(){
+    	for (var x = 0; x < 9; x++)
+    		for (var y = 0; y < 9; y++)
+    		
+    			$scope.field[x][y] = 0;
+        return false;
+
+    }
+     
+
+
     $scope.solveSudoku = function(field, x, y) {
+
+
     var cell = findUnassignedLocation(field, x, y);
     x = cell[0];
     y = cell[1];
@@ -65,6 +148,12 @@ angular.module('suduWebApp')
     // backrack
     return false;
 }
+$scope.benchSudoku = function(field, x, y) {
+        var t0 = performance.now();
+        $scope.solveSudoku(field, x, y);
+        var t1 = performance.now();
+         $scope.bench =Number(((t1 - t0)).toFixed(4)) ;
+     };
 
 
 function findUnassignedLocation(field, x, y) {
@@ -137,6 +226,24 @@ function printfield(field) {
     }
     console.log(res);
 }
+// }
+// (function() {
+
+//         var container = document.getElementById( 'container' ),
+//           dlgtrigger = document.querySelector( '[data-dialog]' ),
+//           somedialog = document.getElementById( dlgtrigger.getAttribute( 'data-dialog' ) ),
+//           dlg = new DialogFx( somedialog, {
+//             onOpenDialog : function( instance ) {
+//               classie.add( container, 'container--move' );
+//             },
+//             onCloseDialog : function( instance ) {
+//               classie.remove( container, 'container--move' );
+//             }
+//           } );
+
+//         dlgtrigger.addEventListener( 'click', dlg.toggle.bind(dlg) );
+
+//       })();
 
 
   });

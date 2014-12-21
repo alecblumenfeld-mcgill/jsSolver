@@ -90,9 +90,14 @@ input[type="number"] {
   text-align: center;
   min-width: 25px;
   min-height: 35px;
-  padding: 0px;
-  border:0px;
-  background-color: grey;
+  margin: 2px;
+  border:5px;
+  background: rgba(255,255,255,0.2);
+
+}
+body{
+  background: #cae4b6;
+  color: #c94e50;
 }
 input[type="number"]:focus {
   outline: none;
@@ -100,11 +105,19 @@ input[type="number"]:focus {
 .noPadding{
   padding: 0px;
   padding-top: 1%;
+  padding-bottom: 1%;
+  padding-left: 1%;
+  padding-right:1%;
+
+}
+.col-xs-3{
+  width: 33%;
 }
 .Grid{
-  margin-left: 5%;
-    margin-right: 3%;
+
     width: 100%;
+
+
 }
 /*#inputBox{
   background-color: blue;
@@ -114,9 +127,122 @@ input[type="number"]:focus {
   min-width: 25px;
   max-width: 25px;
 }*/
+#actions{
+   text-align: center;
+   padding-top: 15px;
+    letter-spacing: 20px;
+}
+#solve{
+  background-color: white;
+  color: #c94e50; 
+}
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
     /* display: none; <- Crashes Chrome on hover */
     -webkit-appearance: none;
     margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+}
+#menu{
+  background-color: transparent;
+  color: #c94e50; 
+  position: absolute;
+  top: 0%;
+  margin-top: 10px;
+  font-size:36px;
+  }
+  body {
+    min-width: 521px;
+}
+
+ #bigSq{
+  width: 33%;
+    background: rgba(255,255,255,0.2);
+
+  }
+  #menu{
+  background-color: transparent;
+  color: #c94e50; 
+  position: absolute;
+  top: 0%;
+  margin-top: 15px;
+  font-size:36px;
+  }
+#picker{
+    color: #c94e50;
+
+  background-color: white;
+}
+#premade{
+  background-color: white;
+    color: #c94e50; 
+
+
+}
+.premade-container{
+  width: 33%;
+
+}
+.alec {
+  width: 150px;
+  height: 150px;
+  border-radius: 150px;
+  -webkit-border-radius: 150px;
+  -moz-border-radius: 150px;
+  background: url(alec.jpg) ;
+  background-size: cover;
+color: transparent;
+  box-shadow: 0 0 8px rgba(0, 0, 0, .8);
+  -webkit-box-shadow: 0 0 8px rgba(0, 0, 0, .8);
+  -moz-box-shadow: 0 0 8px rgba(0, 0, 0, .8);
+  }
+  .alec:hover{
+      background: url(alec1.png) ;
+  background-size: cover;
+      color: #c94e50; 
+      letter-spacing: 1px;
+      vertical-align: center;
+      text-align: center;
+      padding-top : 65px;
+      padding-right : 80px;
+
+
+
+  }
+  .dom {
+  width: 150px;
+  height: 150px;
+  border-radius: 150px;
+  -webkit-border-radius: 150px;
+  -moz-border-radius: 150px;
+  background: url(dom.png) ;
+  background-size: cover;
+
+  box-shadow: 0 0 8px rgba(0, 0, 0, .8);
+  -webkit-box-shadow: 0 0 8px rgba(0, 0, 0, .8);
+  -moz-box-shadow: 0 0 8px rgba(0, 0, 0, .8);
+  }
+   .dom:hover{
+      background: url(dom1.png) ;
+  background-size: cover;
+      color: #c94e50; 
+      letter-spacing: 1px;
+      vertical-align: center;
+      text-align: center;
+      padding-top : 65px;
+      padding-right : 80px;
+
+
+
+  }
+#heading{
+  text-align: center; 
+  font-weight: 900;
+}
+a{
+      color: #c94e50;
+
+}
+li{
+      color: #c94e50;
+
 }

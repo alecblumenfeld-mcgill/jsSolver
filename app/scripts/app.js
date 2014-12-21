@@ -8,8 +8,7 @@
  *
  * Main module of the application.
  */
-angular
-  .module('suduWebApp', [
+angular.module('suduWebApp', [
     'ngAnimate',
     'ngCookies',
     'ngResource',
@@ -26,7 +25,7 @@ angular
       })
       .when('/about', {
         templateUrl: 'views/about.html',
-        controller: 'AboutCtrl'
+        controller: 'MainCtrl'
       })
       .otherwise({
         redirectTo: '/'

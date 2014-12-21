@@ -1,11 +1,16 @@
-<h1 style="text-align: center;">Solve It!</h1>
+<h1 id="heading" ng-hide="bench" >Enter a Puzzle</h1>
+<h1 id="heading" ng-show="bench" >Solved in {{bench}} Ms</h1>
+<a href="javascript:void(0)" ng-click="go('/about')" class="btn btn-flat btn-default mdi-navigation-menu" id="menu"></a>
+
+
+            
 <div class="Grid">
   <!--first row-->
 <div class="row noPadding " >
-<div class="col-xs-3 col-sm-3 noPadding" >
+<div class="col-xs-3 col-sm-3 noPadding bigSq" >
 
   <!--first sq-->
-    <div class="col-xs-3 col-sm-3 noPadding" >
+    <div class="col-xs-3 col-sm-3 noPadding " >
        <sq dir-model="field[0][0]"></sq>
         <sq dir-model="field[1][0]"></sq>
         <sq dir-model="field[2][0]"></sq>
@@ -202,14 +207,27 @@
 
 </div>
 </div>
-<button ng-click="clean();solveSudoku(field,0,0)"> solve</button>
-<br><br>
- {{field[0]}}<br>
-  {{field[1]}}<br>
-   {{field[2]}}<br>
- {{field[3]}}<br>
-  {{field[4]}}<br>
-   {{field[5]}}<br>
-    {{field[6]}}<br>
-  {{field[7]}}<br>
-   {{field[8]}}
+</div>
+<div class="center-block" id="actions">
+  <a href="javascript:void(0)" ng-click="reset()" class="btn btn-default btn-fab btn-raised mdi-navigation-refresh" id="solve"></a>
+<a href="javascript:void(0)" ng-click="clean();benchSudoku(field,0,0)" class="btn btn-default btn-fab btn-raised mdi-navigation-check" id="solve"></a>
+
+</div>
+</div>
+  <h3 id="heading" style="padding-top: 30px ">Premade  </h3>
+
+<div class="row noPadding "  style="text-align:center">
+
+<div class="col-xs-3 col-sm-3 noPadding premade-container" >
+  <a href="javascript:void(0)" ng-click="premadeEasy()" class="btn btn-default " id="premade" style="text-align:center"> Easy </a>
+</div>
+<div class="col-xs-3 col-sm-3 noPadding premade-container" >
+  <a href="javascript:void(0)" ng-click="premadeMed()" class="btn btn-default " id="premade" style="text-align:center"> Medium </a>
+</div>
+<div class="col-xs-3 col-sm-3 noPadding premade-container" >
+  <a href="javascript:void(0)" ng-click="premadeHard();" class="btn btn-default " id="premade" style="text-align:center"> Hard </a>
+</div>
+
+
+</div>
+
